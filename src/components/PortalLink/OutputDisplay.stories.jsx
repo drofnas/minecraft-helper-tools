@@ -9,9 +9,8 @@ const Template = (args) => <OutputDisplay {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  output: `
-    Portal Linking Coords (estimate):
-    :: Overworld ::                   ::  Nether  ::
-    X:-30000, Z:-30000   --links to--   X:-3750, Z:-3750
-  `,
+  coordinates: {
+    overworld: { x: -30000, z: -30000 },
+    nether: { x: -3750, z: -3750 },
+  },
 };

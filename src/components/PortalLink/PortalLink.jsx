@@ -1,55 +1,58 @@
 import { useState, useEffect } from 'react';
 import InputForm from './InputForm';
 import OutputDisplay from './OutputDisplay';
-import { calculateOutput } from './utils';
 
 const PortalLink = () => {
   const [x, setX] = useState('');
   const [z, setZ] = useState('');
   const [origin, setOrigin] = useState('overworld');
-  const [output, setOutput] = useState('');
+  const [coordinates, setCoordinates] = useState(null);
   const [timer, setTimer] = useState(null);
+
+  const calculateCoordinates = (xVal, zVal, originVal) => {
+    const isOverworld = originVal.toLowerCase() === 'overworld';
+    const overworld = {
+      x: isOverworld ? xVal : xVal * 8,
+      z: isOverworld ? zVal : zVal * 8,
+    };
+    const nether = {
+      x: isOverworld ? Math.round(xVal / 8) : xVal,
+      z: isOverworld ? Math.round(zVal / 8) : zVal,
+    };
+
+    setCoordinates({ overworld, nether });
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     if (name === 'x') setX(value);
     if (name === 'z') setZ(value);
     if (name === 'origin') setOrigin(value);
-
-    if (timer) clearTimeout(timer);
-    if (name === 'origin') return;
-
-    setTimer(setTimeout(() => {
-      if (x !== '' && z !== '') {
-        const xVal = parseInt(name === 'x' ? value : x, 10);
-        const zVal = parseInt(name === 'z' ? value : z, 10);
-        setOutput(calculateOutput(xVal, zVal, origin));
-      }
-    }, 1000));
   };
 
   useEffect(() => {
     if (x !== '' && z !== '') {
-      const xVal = parseInt(x, 10);
-      const zVal = parseInt(z, 10);
-      setOutput(calculateOutput(xVal, zVal, origin));
+      if (timer) clearTimeout(timer);
+      setTimer(
+        setTimeout(() => {
+          calculateCoordinates(Number(x), Number(z), origin);
+        }, 250)
+      );
     }
-  }, [origin]);
+  }, [x, z, origin]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (x !== '' && z !== '') {
-      const xVal = parseInt(x, 10);
-      const zVal = parseInt(z, 10);
-      setOutput(calculateOutput(xVal, zVal, origin));
+      calculateCoordinates(Number(x), Number(z), origin);
     } else {
-      setOutput('Invalid input, please enter both X and Z coordinates.');
+      setCoordinates(null);
     }
   };
 
   return (
     <div>
-      <h1 className="">Portal Link Finder</h1>
+      <h1>Portal Link Finder</h1>
       <InputForm
         x={x}
         z={z}
@@ -57,7 +60,7 @@ const PortalLink = () => {
         handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
       />
-      <OutputDisplay output={output} />
+      {coordinates && <OutputDisplay coordinates={coordinates} />}
     </div>
   );
 };
