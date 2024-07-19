@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const PortalLink = () => {
   const [x, setX] = useState('');
@@ -8,7 +8,7 @@ const PortalLink = () => {
   const [timer, setTimer] = useState(null);
 
   const calcVal = (coord, isOverworld = true) => {
-    return isOverworld ? Math.floor(coord / 8) : coord * 8;
+    return isOverworld ? Math.round(coord / 8) : Math.round(coord * 8);
   };
 
   const sizeMatch = (title, coords) => {
@@ -55,11 +55,14 @@ const PortalLink = () => {
     setTimer(setTimeout(() => {
       if (x !== '' && z !== '') {
         const isOverworld = origin.toLowerCase() === 'overworld';
+        const xVal = parseInt(name === 'x' ? value : x, 10);
+        const zVal = parseInt(name === 'z' ? value : z, 10);
+
         const result = {
-          netherX: isOverworld ? calcVal(Number(x)) : Number(x),
-          netherZ: isOverworld ? calcVal(Number(z)) : Number(z),
-          overworldX: isOverworld ? Number(x) : calcVal(Number(x), false),
-          overworldZ: isOverworld ? Number(z) : calcVal(Number(z), false),
+          netherX: isOverworld ? calcVal(xVal) : xVal,
+          netherZ: isOverworld ? calcVal(zVal) : zVal,
+          overworldX: isOverworld ? xVal : calcVal(xVal, false),
+          overworldZ: isOverworld ? zVal : calcVal(zVal, false),
         };
         const coordsOutput = printCoords(result);
         setOutput(coordsOutput);
@@ -71,11 +74,14 @@ const PortalLink = () => {
     event.preventDefault();
     if (x !== '' && z !== '') {
       const isOverworld = origin.toLowerCase() === 'overworld';
+      const xVal = parseInt(x, 10);
+      const zVal = parseInt(z, 10);
+
       const result = {
-        netherX: isOverworld ? calcVal(Number(x)) : Number(x),
-        netherZ: isOverworld ? calcVal(Number(z)) : Number(z),
-        overworldX: isOverworld ? Number(x) : calcVal(Number(x), false),
-        overworldZ: isOverworld ? Number(z) : calcVal(Number(z), false),
+        netherX: isOverworld ? calcVal(xVal) : xVal,
+        netherZ: isOverworld ? calcVal(zVal) : zVal,
+        overworldX: isOverworld ? xVal : calcVal(xVal, false),
+        overworldZ: isOverworld ? zVal : calcVal(zVal, false),
       };
       const coordsOutput = printCoords(result);
       setOutput(coordsOutput);
