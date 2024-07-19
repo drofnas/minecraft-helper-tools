@@ -2,34 +2,34 @@ import PropTypes from 'prop-types';
 
 const InputForm = ({ x, z, handleInputChange, handleSubmit }) => {
   return (
-    <form id={"ChunkFindForm"} onSubmit={handleSubmit} className="space-y-4 p-4 bg-white rounded-lg shadow-md">
+    <form id={"ChunkFindForm"} onSubmit={handleSubmit} className="space-y-4 p-4 bg-white rounded-lg border border-emerald-500">
       <div className="flex flex-col">
-        <label className="mb-2 text-lg font-semibold text-gray-700">
+        <label className="input-label">
           X Coordinate:
-          <input
-            type="number"
-            name="x"
-            value={x}
-            onChange={handleInputChange}
-            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          />
         </label>
+        <input
+          type="number"
+          name="x"
+          value={x}
+          onChange={handleInputChange}
+          className="input-txt"
+        />
       </div>
       <div className="flex flex-col">
-        <label className="mb-2 text-lg font-semibold text-gray-700">
+        <label className="input-label">
           Z Coordinate:
-          <input
-            type="number"
-            name="z"
-            value={z}
-            onChange={handleInputChange}
-            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          />
         </label>
+        <input
+          type="number"
+          name="z"
+          value={z}
+          onChange={handleInputChange}
+          className="input-txt"
+        />
       </div>
       <button
         type="submit"
-        className="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
+        className="btn btn-primary"
       >
         Find Chunk
       </button>
