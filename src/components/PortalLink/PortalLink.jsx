@@ -49,7 +49,7 @@ const PortalLink = () => {
 
   return (
     <div>
-      <h1>Portal Link Finder</h1>
+      <h1 className="">Portal Link Finder</h1>
       <InputForm
         x={x}
         z={z}

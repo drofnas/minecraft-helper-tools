@@ -28,6 +28,7 @@ helpers from Shell scripts into a React UI.
 * React
 * Vite
 * Tailwind
+* HeadlessUI
 * Storybook
 
 # Development
