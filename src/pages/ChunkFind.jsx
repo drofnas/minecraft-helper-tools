@@ -4,6 +4,7 @@ const ChunkFind = () => {
   const [x, setX] = useState('');
   const [z, setZ] = useState('');
   const [output, setOutput] = useState('');
+  const [timer, setTimer] = useState(null);
 
   const calcVal = (coord) => {
     if (coord >= 0 && coord <= 15) return 0;
@@ -38,6 +39,21 @@ const ChunkFind = () => {
     `;
   };
 
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    if (name === 'x') setX(value);
+    if (name === 'z') setZ(value);
+
+    if (timer) clearTimeout(timer);
+
+    setTimer(setTimeout(() => {
+      if (value !== '' && x !== '' && z !== '') {
+        const chunkOutput = printAsciiChunk(Number(name === 'x' ? value : x), Number(name === 'z' ? value : z));
+        setOutput(chunkOutput);
+      }
+    }, 500));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (x !== '' && z !== '') {
@@ -55,13 +71,13 @@ const ChunkFind = () => {
         <div>
           <label>
             X Coordinate:
-            <input type="number" value={x} onChange={(e) => setX(e.target.value)} />
+            <input type="number" name="x" value={x} onChange={handleInputChange} />
           </label>
         </div>
         <div>
           <label>
             Z Coordinate:
-            <input type="number" value={z} onChange={(e) => setZ(e.target.value)} />
+            <input type="number" name="z" value={z} onChange={handleInputChange} />
           </label>
         </div>
         <button type="submit">Find Chunk</button>
