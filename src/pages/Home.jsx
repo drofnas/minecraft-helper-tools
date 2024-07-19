@@ -6,6 +6,8 @@ function Home() {
       <h1>Welcome to the Home Page</h1>
       <div>Hello World Here</div>
       <Link to="/chunkfind">Go to Chunk Finder</Link>
+      <br/>
+      <Link to="/portallink">Go to Portal Link Finder</Link>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 import Home from './pages/Home';
 import ChunkFind from './pages/ChunkFind';
+import PortalLink from './pages/PortalLink';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/chunkfind" element={<ChunkFind />} />
+        <Route path="/portallink" element={<PortalLink />} />
       </Routes>
     </Router>
   )
