@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import InputForm from './InputForm';
 import OutputDisplay from './OutputDisplay';
-import { printAsciiChunk } from './utils';
+import { calcVal } from './utils';
 
 const ChunkFind = () => {
   const [x, setX] = useState('');
   const [z, setZ] = useState('');
-  const [output, setOutput] = useState('');
+  const [coordinates, setCoordinates] = useState(null);
   const [timer, setTimer] = useState(null);
 
   const handleInputChange = (event) => {
@@ -18,19 +18,31 @@ const ChunkFind = () => {
 
     setTimer(setTimeout(() => {
       if (value !== '' && x !== '' && z !== '') {
-        const chunkOutput = printAsciiChunk(Number(name === 'x' ? value : x), Number(name === 'z' ? value : z));
-        setOutput(chunkOutput);
+        calculateCoordinates(Number(name === 'x' ? value : x), Number(name === 'z' ? value : z));
       }
     }, 500));
+  };
+
+  const calculateCoordinates = (xVal, zVal) => {
+    const xStart = calcVal(xVal);
+    const zStart = calcVal(zVal);
+    const xEnd = xStart + 15;
+    const zEnd = zStart + 15;
+
+    setCoordinates({
+      topLeft: { x: xStart, z: zStart },
+      topRight: { x: xEnd, z: zStart },
+      bottomLeft: { x: xStart, z: zEnd },
+      bottomRight: { x: xEnd, z: zEnd },
+    });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (x !== '' && z !== '') {
-      const chunkOutput = printAsciiChunk(Number(x), Number(z));
-      setOutput(chunkOutput);
+      calculateCoordinates(Number(x), Number(z));
     } else {
-      setOutput('Invalid input, please enter both X and Z coordinates.');
+      setCoordinates(null);
     }
   };
 
@@ -43,7 +55,7 @@ const ChunkFind = () => {
         handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
       />
-      <OutputDisplay output={output} />
+      {coordinates && <OutputDisplay coordinates={coordinates} />}
     </div>
   );
 };

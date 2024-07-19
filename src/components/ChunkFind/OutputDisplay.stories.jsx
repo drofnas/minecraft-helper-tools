@@ -9,14 +9,10 @@ const Template = (args) => <OutputDisplay {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  output: `
-    0,0                15,0
-       ----------------
-       -              -
-       -              -
-       -              -
-       -              -
-       ----------------
-    0,15               15,15
-  `,
+  coordinates: {
+    topLeft: { x: 0, z: 0 },
+    topRight: { x: 15, z: 0 },
+    bottomLeft: { x: 0, z: 15 },
+    bottomRight: { x: 15, z: 15 },
+  },
 };
