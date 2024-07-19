@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import{ useState, useEffect } from 'react';
 
 const PortalLink = () => {
   const [x, setX] = useState('');
@@ -44,6 +44,18 @@ const PortalLink = () => {
     `;
   };
 
+  const calculateAndSetOutput = (xVal, zVal, originVal) => {
+    const isOverworld = originVal.toLowerCase() === 'overworld';
+    const result = {
+      netherX: isOverworld ? calcVal(xVal) : xVal,
+      netherZ: isOverworld ? calcVal(zVal) : zVal,
+      overworldX: isOverworld ? xVal : calcVal(xVal, false),
+      overworldZ: isOverworld ? zVal : calcVal(zVal, false),
+    };
+    const coordsOutput = printCoords(result);
+    setOutput(coordsOutput);
+  };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     if (name === 'x') setX(value);
@@ -51,40 +63,31 @@ const PortalLink = () => {
     if (name === 'origin') setOrigin(value);
 
     if (timer) clearTimeout(timer);
+    if (name === 'origin') return;
 
     setTimer(setTimeout(() => {
       if (x !== '' && z !== '') {
-        const isOverworld = origin.toLowerCase() === 'overworld';
         const xVal = parseInt(name === 'x' ? value : x, 10);
         const zVal = parseInt(name === 'z' ? value : z, 10);
-
-        const result = {
-          netherX: isOverworld ? calcVal(xVal) : xVal,
-          netherZ: isOverworld ? calcVal(zVal) : zVal,
-          overworldX: isOverworld ? xVal : calcVal(xVal, false),
-          overworldZ: isOverworld ? zVal : calcVal(zVal, false),
-        };
-        const coordsOutput = printCoords(result);
-        setOutput(coordsOutput);
+        calculateAndSetOutput(xVal, zVal, origin);
       }
     }, 1000));
   };
 
+  useEffect(() => {
+    if (x !== '' && z !== '') {
+      const xVal = parseInt(x, 10);
+      const zVal = parseInt(z, 10);
+      calculateAndSetOutput(xVal, zVal, origin);
+    }
+  }, [origin]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (x !== '' && z !== '') {
-      const isOverworld = origin.toLowerCase() === 'overworld';
       const xVal = parseInt(x, 10);
       const zVal = parseInt(z, 10);
-
-      const result = {
-        netherX: isOverworld ? calcVal(xVal) : xVal,
-        netherZ: isOverworld ? calcVal(zVal) : zVal,
-        overworldX: isOverworld ? xVal : calcVal(xVal, false),
-        overworldZ: isOverworld ? zVal : calcVal(zVal, false),
-      };
-      const coordsOutput = printCoords(result);
-      setOutput(coordsOutput);
+      calculateAndSetOutput(xVal, zVal, origin);
     } else {
       setOutput('Invalid input, please enter both X and Z coordinates.');
     }
