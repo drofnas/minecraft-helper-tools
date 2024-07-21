@@ -1,5 +1,8 @@
 /** @type { import('@storybook/react').Preview } */
+import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import '../src/tailwind.css';
+
 const preview = {
   parameters: {
     controls: {
@@ -9,6 +12,13 @@ const preview = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <MemoryRouter initialEntries={['/']}>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
 };
 
 export default preview;
