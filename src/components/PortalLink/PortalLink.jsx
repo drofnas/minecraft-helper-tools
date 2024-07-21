@@ -53,9 +53,9 @@ const PortalLink = () => {
   return (
     <div>
       <div>
-        <a href="/">Back Home</a>
+        <a className={"btn btn-ghost text-xs"} href="/">Back Home</a>
       </div>
-      <h1>Portal Link Finder</h1>
+      <h2>Portal Link Finder</h2>
       <InputForm
         x={x}
         z={z}

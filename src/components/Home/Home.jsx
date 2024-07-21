@@ -13,8 +13,8 @@ const Home = () => {
           Find what you need with these helper tools.
         </p>
         <div className={styles.btn_group}>
-          <a href="/chunkfind" rel="noreferrer">Chunk Finder</a>
-          <a href="/portallink" rel="noreferrer">Portal Linker</a>
+          <a className="btn btn-primary" href="/chunkfind" rel="noreferrer">Chunk Finder</a>
+          <a className="btn btn-primary" href="/portallink" rel="noreferrer">Portal Linker</a>
         </div>
       </div>
     </div>

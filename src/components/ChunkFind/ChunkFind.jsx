@@ -49,9 +49,9 @@ const ChunkFind = () => {
   return (
     <div>
       <div>
-        <a href="/">Back Home</a>
+        <a className={"btn btn-ghost text-xs"} href="/">Back Home</a>
       </div>
-      <h1>Chunk Finder</h1>
+      <h2>Chunk Finder</h2>
       <InputForm
         x={x}
         z={z}
