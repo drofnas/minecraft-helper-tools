@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import InputForm from './InputForm';
 import OutputDisplay from './OutputDisplay';
 
@@ -52,6 +52,9 @@ const PortalLink = () => {
 
   return (
     <div>
+      <div>
+        <a href="/">Back Home</a>
+      </div>
       <h1>Portal Link Finder</h1>
       <InputForm
         x={x}
@@ -60,7 +63,7 @@ const PortalLink = () => {
         handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
       />
-      {coordinates && <OutputDisplay coordinates={coordinates} />}
+      {coordinates && <OutputDisplay coordinates={coordinates}/>}
     </div>
   );
 };

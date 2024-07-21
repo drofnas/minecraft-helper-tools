@@ -11,6 +11,23 @@ const preview = {
         date: /Date$/i,
       },
     },
+    backgrounds: {
+      default: 'gradient', // You can set the default background color here
+      values: [
+        {
+          name: 'gradient',
+          value: 'linear-gradient(90deg, #86E3CE, #D0E6A5)',
+        },
+        {
+          name: 'white',
+          value: '#ffffff',
+        },
+        {
+          name: 'dark',
+          value: '#333333',
+        },
+      ],
+    },
   },
   decorators: [
     (Story) => (

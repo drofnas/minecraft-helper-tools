@@ -48,6 +48,9 @@ const ChunkFind = () => {
 
   return (
     <div>
+      <div>
+        <a href="/">Back Home</a>
+      </div>
       <h1>Chunk Finder</h1>
       <InputForm
         x={x}
