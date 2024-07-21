@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 /* Custom utility classes */
+#root {
+  @apply w-full
+}
+
 h1 {
   @apply mt-10 text-5xl font-bold tracking-tight text-black sm:text-6xl;
 }
@@ -35,7 +39,7 @@ a:hover {
 }
 
 .btn-ghost {
-  @apply bg-gray-500 text-white hover:bg-gray-700 focus:ring-gray-500 bg-opacity-70;
+  @apply bg-gray-500 text-white hover:bg-gray-700 focus:ring-gray-500 bg-opacity-20;
 }
 
 .input-txt {

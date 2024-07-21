@@ -47,18 +47,24 @@ const ChunkFind = () => {
   };
 
   return (
-    <div>
+    <div className="container mx-auto p-4 w-full">
       <div>
-        <a className={"btn btn-ghost text-xs"} href="/">Back Home</a>
+        <a className="btn btn-ghost text-xs" href="/">Back Home</a>
       </div>
-      <h2>Chunk Finder</h2>
-      <InputForm
-        x={x}
-        z={z}
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
-      />
-      {coordinates && <OutputDisplay coordinates={coordinates} />}
+      <h2 className="text-xl font-semibold mb-4">Chunk Finder</h2>
+      <div className="flex space-x-6">
+        <div className="w-1/2">
+          <InputForm
+            x={x}
+            z={z}
+            handleInputChange={handleInputChange}
+            handleSubmit={handleSubmit}
+          />
+        </div>
+        <div className="w-1/2 bg-emerald-600 bg-opacity-10">
+          {coordinates && <OutputDisplay coordinates={coordinates} />}
+        </div>
+      </div>
     </div>
   );
 };
