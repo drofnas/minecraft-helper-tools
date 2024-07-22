@@ -51,7 +51,7 @@ const PortalLink = () => {
   };
 
   return (
-    <div>
+    <div className="container mx-auto p-4 w-full">
       <div>
         <a className={"btn btn-ghost text-xs"} href="/">Back Home</a>
       </div>
