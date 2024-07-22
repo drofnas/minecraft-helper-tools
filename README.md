@@ -10,6 +10,7 @@ for each corner block of the chunk you are currently on. This is very handy for 
 farms that either need to cross chunk borders together, such as flying machines, or ones 
 that must be built entirely inside a chunk due to the risk of them breaking.
 
+<img src="./src/assets/readme-chunkfinder.png" alt="Chunk Finder UI" style="max-width: 600px; height: auto;" />
 
 ### Portal Linker
 
@@ -19,6 +20,7 @@ Nether when creating a portal. While it's not exact, since Minecraft will create
 portal in the general area and at a random Y level, this tool helps when trying to reach 
 distant lands via a Nether hub.
 
+<img src="./src/assets/readme-portallinker.png" alt="Portal Linker UI" style="max-width: 600px; height: auto;" />
 
 # But Why?
 
@@ -31,6 +33,7 @@ helpers from shell scripts into a React UI.
 * Tailwind
 * Storybook
 
+<img src="./src/assets/readme-storybook.png" alt="Storybook Integration" style="max-width: 600px; height: auto;" />
 
 # Development
 
