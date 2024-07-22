@@ -4,7 +4,7 @@ const OutputDisplay = ({ coordinates }) => {
   const { overworld, nether } = coordinates;
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md">
+    <div className="p-4 bg-white rounded-lg shadow-md max-w-lg">
       <h2 className="text-lg font-semibold text-gray-700 mb-4">Portal Linking Coords (estimate):</h2>
       <div className="flex justify-between">
         <div className="text-center">

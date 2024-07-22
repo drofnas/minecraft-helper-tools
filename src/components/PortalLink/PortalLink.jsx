@@ -55,15 +55,24 @@ const PortalLink = () => {
       <div>
         <a className={"btn btn-ghost text-xs"} href="/">Back Home</a>
       </div>
-      <h2>Portal Link Finder</h2>
-      <InputForm
-        x={x}
-        z={z}
-        origin={origin}
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
-      />
-      {coordinates && <OutputDisplay coordinates={coordinates}/>}
+      <h2 className="font-semibold">Portal Link Finder</h2>
+      <p className="w-full md:w-1/2 mb-3">
+        Find the borders of the current chunk you are on.
+      </p>
+      <div className="flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0">
+        <div className="w-full md:w-1/2">
+          <InputForm
+            x={x}
+            z={z}
+            origin={origin}
+            handleInputChange={handleInputChange}
+            handleSubmit={handleSubmit}
+          />
+        </div>
+        <div className="w-full md:w-1/2">
+          {coordinates && <OutputDisplay coordinates={coordinates}/>}
+        </div>
+      </div>
     </div>
   );
 };

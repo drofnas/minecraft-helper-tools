@@ -4,7 +4,7 @@ const OutputDisplay = ({ coordinates }) => {
   const { topLeft, topRight, bottomLeft, bottomRight } = coordinates;
 
   return (
-    <div className="relative w-64 h-64 border border-gray-500 mx-auto mt-4">
+    <div className="relative w-64 h-64 border border-gray-500 mx-auto mt-4 max-w-lg">
       <div className="absolute left-0 top-0 transform -translate-x-1/2 -translate-y-1/2 bg-white p-1">
         {topLeft.x},{topLeft.z}
       </div>

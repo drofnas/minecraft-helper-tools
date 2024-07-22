@@ -51,9 +51,12 @@ const ChunkFind = () => {
       <div>
         <a className="btn btn-ghost text-xs" href="/">Back Home</a>
       </div>
-      <h2 className="text-xl font-semibold mb-4">Chunk Finder</h2>
-      <div className="flex space-x-6">
-        <div className="w-1/2">
+      <h2 className="font-semibold">Chunk Finder</h2>
+      <p className="w-full md:w-1/2 mb-3">
+        Find the borders of the current chunk you are on.
+      </p>
+      <div className="flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0">
+        <div className="w-full md:w-1/2">
           <InputForm
             x={x}
             z={z}
@@ -61,8 +64,8 @@ const ChunkFind = () => {
             handleSubmit={handleSubmit}
           />
         </div>
-        <div className="w-1/2 bg-emerald-600 bg-opacity-10">
-          {coordinates && <OutputDisplay coordinates={coordinates} />}
+        <div className="w-full md:w-1/2">
+          {coordinates && <OutputDisplay coordinates={coordinates}/>}
         </div>
       </div>
     </div>

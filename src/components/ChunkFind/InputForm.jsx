@@ -3,7 +3,7 @@ import { Input, Button, Label, Field } from '@headlessui/react'
 
 const InputForm = ({ x, z, handleInputChange, handleSubmit }) => {
   return (
-    <form id={"ChunkFindForm"} onSubmit={handleSubmit} className="space-y-4 p-4 bg-white rounded-lg border border-emerald-500">
+    <form id={"ChunkFindForm"} onSubmit={handleSubmit} className="space-y-4 p-4 bg-white rounded-lg border border-emerald-500 max-w-lg">
       <Field className="flex flex-col">
         <Label className="input-label">
           X Coordinate:
